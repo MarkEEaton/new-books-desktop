@@ -30,7 +30,7 @@ def make_html(input_tuples, outfile):
         item_counter = ''
         for item in input_tuples:
             if item[0] != item_counter:
-                file_2.write('<h3>' + item[0] + '</h3>')
+                file_2.write('</ul><h3>' + item[0] + '</h3><ul>')
             file_2.write(item[1])
             item_counter = item[0]
         file_2.write('</ul>')
