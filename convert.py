@@ -1,4 +1,5 @@
 """ turns a csv of new books into html """
+import argparse
 import csv
 
 
@@ -7,7 +8,7 @@ def make_tuples(input_data):
     data_list = []
 
     for line in input_data:
-        bib_info1 = '<li><strong>' + line[2] + '</strong>'
+        bib_info1 = '<li><strong>' + line[2].title() + '</strong>'
         if line[1]:
             bib_info2 = '<li><em>Author: </em>' + line[1] + '</li>'
         else:
@@ -22,20 +23,26 @@ def make_tuples(input_data):
         data_list.append(line_tup)
     return data_list
 
-def make_html(input_tuples):
+def make_html(input_tuples, outfile):
     """ makes html out of the tuples """
-    with open('output.html', 'a', encoding='utf-16') as f2:
-        f2.write('<ul>')
+    with open(outfile, 'a', encoding='utf-16') as file_2:
+        file_2.write('<ul>')
         item_counter = ''
         for item in input_tuples:
             if item[0] != item_counter:
-                f2.write('<h3>' + item[0] + '</h3>')
-            f2.write(item[1])
+                file_2.write('<h3>' + item[0] + '</h3>')
+            file_2.write(item[1])
             item_counter = item[0]
-        f2.write('</ul>')
+        file_2.write('</ul>')
 
 if __name__ == "__main__":
-    with open('March2018.csv', 'r', encoding='cp437') as f1:
-        DATA = csv.reader(f1)
-        tuples = make_tuples(DATA)
-    make_html(tuples)
+    parser = argparse.ArgumentParser(description='Parses a csv of new books')
+    parser.add_argument('infile', metavar='[infile]', type=str,
+                        help='a csv file')
+    parser.add_argument('outfile', metavar='[outfile]', type=str,
+                        help='an html file')
+    args = parser.parse_args()
+    with open(args.infile, 'r', encoding='cp437') as file_1:
+        DATA = csv.reader(file_1)
+        TUPLES = make_tuples(DATA)
+    make_html(TUPLES, args.outfile)
