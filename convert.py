@@ -35,7 +35,8 @@ def make_html(input_tuples, outfile):
             item_counter = item[0]
         file_2.write('</ul>')
 
-if __name__ == "__main__":
+def main():
+    """ run it! """
     parser = argparse.ArgumentParser(description='Parses a csv of new books')
     parser.add_argument('infile', metavar='[infile]', type=str,
                         help='a csv file')
@@ -43,6 +44,9 @@ if __name__ == "__main__":
                         help='an html file')
     args = parser.parse_args()
     with open(args.infile, 'r', encoding='cp437') as file_1:
-        DATA = csv.reader(file_1)
-        TUPLES = make_tuples(DATA)
-    make_html(TUPLES, args.outfile)
+        data = csv.reader(file_1)
+        tuples = make_tuples(data)
+    make_html(tuples, args.outfile)
+
+if __name__ == "__main__":
+    main()
