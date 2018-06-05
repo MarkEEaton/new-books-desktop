@@ -7,7 +7,7 @@ def make_tuples(input_data):
     """ make tuples out of the csv data """
     data_list = []
 
-    for line in input_data:
+    for line in input_data[1:]:
         bib_info1 = '<li><strong>' + line[2].title() + '</strong>'
         if line[1]:
             bib_info2 = '<li><em>Author: </em>' + line[1] + '</li>'
@@ -43,8 +43,8 @@ def main():
     parser.add_argument('outfile', metavar='[outfile]', type=str,
                         help='an html file')
     args = parser.parse_args()
-    with open(args.infile, 'r', encoding='cp437') as file_1:
-        data = csv.reader(file_1)
+    with open(args.infile, 'r', encoding='cp1252') as file_1:
+        data = list(csv.reader(file_1))
         tuples = make_tuples(data)
     make_html(tuples, args.outfile)
 
