@@ -17,8 +17,10 @@ def make_tuples(input_data):
             bib_info3 = '<li><em>Call number: </em>' + line[3] + '</li>'
         else:
             bib_info3 = ''
-        bib_info4 = '</li>'
-        bib_info = bib_info1 + '<ul>' + bib_info2 + bib_info3 + '</ul>' + bib_info4
+        url = line[5].replace(' ', '%20')
+        bib_info4 = '<li><a href=' + url + '>Search the catalog</a></li>'
+        bib_info5 = '</li>'
+        bib_info = bib_info1 + '<ul>' + bib_info2 + bib_info3 + bib_info4 + '</ul>' + bib_info5
         line_tup = (line[0], bib_info)
         data_list.append(line_tup)
     return data_list
