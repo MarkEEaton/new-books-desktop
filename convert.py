@@ -10,7 +10,13 @@ def make_tuples(input_data):
     for line in input_data[1:]:
         bib_info1 = '<li><strong>' + line[2].title() + '</strong>'
         if line[1]:
-            bib_info2 = '<li><em>Author: </em>' + line[1] + '</li>'
+            if line[1][-9:] == ', author.':
+                author = line[1][:-9]
+            elif line[1][-9:] == '- author.':
+                author = line[1][:-8]
+            else:
+                author = line[1]
+            bib_info2 = '<li><em>Author: </em>' + author + '</li>'
         else:
             bib_info2 = ''
         if line[3]:
