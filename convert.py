@@ -33,7 +33,7 @@ def make_tuples(input_data):
 
 def make_html(input_tuples, outfile):
     """ makes html out of the tuples """
-    with open(outfile, 'a', encoding='utf-16') as file_2:
+    with open('data/' + outfile, 'a', encoding='utf-16') as file_2:
         file_2.write('<ul>')
         item_counter = ''
         for item in input_tuples:
@@ -51,7 +51,7 @@ def main():
     parser.add_argument('outfile', metavar='[outfile]', type=str,
                         help='an html file')
     args = parser.parse_args()
-    with open(args.infile, 'r', encoding='cp1252') as file_1:
+    with open('data/' + args.infile, 'r', encoding='cp1252') as file_1:
         data = list(csv.reader(file_1))
         tuples = make_tuples(data)
     make_html(tuples, args.outfile)
