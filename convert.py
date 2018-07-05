@@ -1,6 +1,7 @@
 """ turns a csv of new books into html """
 import argparse
 import csv
+from titlecase import titlecase
 
 
 def make_tuples(input_data):
@@ -8,7 +9,7 @@ def make_tuples(input_data):
     data_list = []
 
     for line in input_data[1:]:
-        bib_info1 = '<li><strong>' + line[2].title() + '</strong>'
+        bib_info1 = '<li><strong>' + titlecase(line[2]) + '</strong>'
         if line[1]:
             if line[1][-9:] == ', author.':
                 author = line[1][:-9]
