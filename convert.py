@@ -59,16 +59,16 @@ def make_html(input_tuples, outfile):
         file_2.write('<ul>')
 
         # keep track of what LC class is the current one, iterate through the tuples
-        item_counter = ''
+        current_lc_class = ''
         for item in input_tuples:
 
-            # if it's a new LC class, create a header
-            if item[0] != item_counter:
+            # if it's a new LC class, create a new header
+            if item[0] != current_lc_class:
                 file_2.write('</ul><h3>' + item[0] + '</h3><ul>')
 
-            # then write the item, then reassign the counter
+            # then write the item, then reassign the current LC class
             file_2.write(item[1])
-            item_counter = item[0]
+            current_lc_class = item[0]
 
         # close the big list
         file_2.write('</ul>')
