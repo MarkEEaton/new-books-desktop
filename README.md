@@ -6,7 +6,7 @@
 
 ## To use the script
 
-These instructions assume you already have the following installed: git, python 3, pyenv
+These instructions assume you already have the following installed: git, python 3, pipenv
 
 To set up the converter at the command line (you only need to do this part once):
 
