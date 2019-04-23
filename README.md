@@ -6,11 +6,13 @@
 
 ## To use the script
 
+These instructions assume you already have the following installed: git, python 3, pyenv
+
 To set up the converter at the command line (you only need to do this part once):
 
     $ git clone https://github.com/markeeaton/new-books   # this will clone the github repository to your machine
     $ cd new-books   # go to the repository directory
-    $ pipenv install   # to get the necessary packages. You'll need pipenv for this.
+    $ pipenv install   # to get the necessary packages
 
 Then you should have your input spreadsheet organized as follows:
 
