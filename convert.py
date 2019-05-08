@@ -35,13 +35,16 @@ def make_tuples(input_data):
             # if there is no call number, assign an empty string
             bib_info3 = ""
 
-        # make the url for the catalog link, then make HTML for the url
-        url = (
-            "http://onesearch.cuny.edu/primo-explore/search?query=any,contains,"
-            + line[2]
-            + "&tab=default_tab&search_scope=everything&vid=kb&lang=en_US&offset=0"
-        )
-        bib_info4 = '<li><a href="' + url + '">Search the catalog</a></li>'
+        if line[2]:
+            # make the url for the catalog link, then make HTML for the url
+            url = (
+                "http://onesearch.cuny.edu/primo-explore/search?query=any,contains,"
+                + line[2]
+                + "&tab=default_tab&search_scope=everything&vid=kb&lang=en_US&offset=0"
+            )
+            bib_info4 = '<li><a href="' + url + '">Search the catalog</a></li>'
+        else:
+            bib_info4 = ""
 
         # assemble all the HTML for the item
         bib_info = (
@@ -57,7 +60,8 @@ def make_tuples(input_data):
         # make a tuple for the item. The first item is LC Class, the second is the HTML.
         lc_class = line[0]
         item_tuple = (lc_class, bib_info)
-        data_list.append(item_tuple)
+        if line[2]:
+            data_list.append(item_tuple)
 
     # return the list of tuples
     return data_list
@@ -67,7 +71,7 @@ def make_html(input_tuples, args):
     """ makes html out of the tuples """
 
     # open a file for the HTML
-    with open(args.infile[:-3] + "html", "a", encoding="utf-16") as file_2:
+    with open(args.infile[:-3] + "html", "w", encoding="utf-16") as file_2:
 
         # start a big unordered list
         file_2.write("<ul>")
