@@ -8,6 +8,7 @@ pylint = "*"
 
 [packages]
 titlecase = "*"
+gooey = "*"
 
 [requires]
 python_version = "3.6"

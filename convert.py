@@ -2,6 +2,7 @@
 import argparse
 import csv
 from titlecase import titlecase
+from gooey import Gooey, GooeyParser
 
 
 def make_tuples(input_data):
@@ -50,11 +51,11 @@ def make_tuples(input_data):
     # return the list of tuples
     return data_list
 
-def make_html(input_tuples, outfile):
+def make_html(input_tuples, args):
     """ makes html out of the tuples """
 
     # open a file for the HTML
-    with open('data/' + outfile, 'a', encoding='utf-16') as file_2:
+    with open(args.infile[:-3] + "html", 'a', encoding='utf-16') as file_2:
 
         # start a big unordered list
         file_2.write('<ul>')
@@ -74,22 +75,23 @@ def make_html(input_tuples, outfile):
         # close the big list
         file_2.write('</ul>')
 
+@Gooey
 def main():
     """ run it! """
 
     # handle the command line input using argparse
-    parser = argparse.ArgumentParser(description='Parses a csv of new books')
-    parser.add_argument('infile', metavar='[infile]', type=str,
-                        help='a csv file')
-    parser.add_argument('outfile', metavar='[outfile]', type=str,
-                        help='an html file')
+    parser = GooeyParser(description='Parses a csv of new books')
+    search_group = parser.add_argument_group('Specify files',
+                                             gooey_options={'columns': 1})
+    search_group.add_argument('infile', metavar='Infile', type=str,
+                              help='a csv file', widget="FileChooser")
     args = parser.parse_args()
 
     # do all the work! Make the tuples and then turn them into HTML
-    with open('data/' + args.infile, 'r', encoding='cp1252') as file_1:
+    with open(args.infile, 'r', encoding='cp1252') as file_1:
         data = list(csv.reader(file_1))
         tuples = make_tuples(data)
-    make_html(tuples, args.outfile)
+    make_html(tuples, args)
 
 if __name__ == "__main__":
     main()
