@@ -31,6 +31,10 @@ Once that's set up, you can use the convert script by replacing `input.csv` and 
 
 The output file will be in the `data/` directory.
 
+## Want to run a desktop version?
+
+Use the `gooey` branch of this repository. Run `pipenv install pyinstaller` to get the packaging library, and then follow the packaging instructions at the Gooey [page](https://github.com/chriskiehl/Gooey#packaging).
+
 ## Want to see more?
 
 Presented as a poster "[Improving Workflows and Outreach with Python: Automating a New Books LibGuide](https://acrl2019-acrl.ipostersessions.com/default.aspx?s=37-56-DD-3C-35-98-74-74-B1-1A-26-90-E1-A6-31-35)" at ACRL 2019 in Cleveland, OH
