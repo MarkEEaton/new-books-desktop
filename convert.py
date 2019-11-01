@@ -35,8 +35,17 @@ def make_tuples(input_data):
             # if there is no call number, assign an empty string
             bib_info3 = ""
 
-        if line[2]:
-            # make the url for the catalog link, then make HTML for the url
+        # make the URL based on the ISBN
+        # failing that make the URL based on the title
+        # failing that make no link
+        if line[4]:
+            url = (
+                "http://onesearch.cuny.edu/primo-explore/search?query=isbn,exact,"
+                + line[4]
+                + "&tab=default_tab&search_scope=everything&vid=kb&lang=en_US&offset=0"
+            )
+            bib_info4 = '<li><a href="' + url + '">Search the catalog</a></li>'
+        elif line[2]:
             url = (
                 "http://onesearch.cuny.edu/primo-explore/search?query=any,contains,"
                 + line[2]
