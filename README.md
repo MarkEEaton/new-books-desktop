@@ -14,7 +14,7 @@ To build the converter executable at the command line (you only need to do this 
     $ cd new-books-desktop   # go to the repository directory
     $ pipenv install   # to get the necessary packages
     
-Then open up `build.spec` and replace the places where is says `REPLACE_ME` with the name that you want to give your application.
+Then open up `build.spec` and replace `REPLACE_ME` with the name that you want to give your application.
 
 Then, to build the application, run:
 
@@ -36,6 +36,10 @@ The CSV should be organized as follows:
 
 - Be sure to include a row with column headers!
 - You can run the application to process the CSV file. The output will be an `html` file in the same directory as the CSV.
+
+## Want to run a command line version?
+
+See the repository for the [command line application](https://github.com/markeeaton/new-books.git).
 
 ## Want to see more?
 
