@@ -18,7 +18,7 @@ Then open up `build.spec` and replace `REPLACE_ME` with the name that you want t
 
 Then, to build the application, run:
 
-    $ PyInstaller build.spec
+    $ pipenv run PyInstaller build.spec
 
 The executable application will be in the `new-books-desktop/dist` directory. It will have the name that you gave it in the `build.spec` file.
 
