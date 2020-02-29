@@ -105,7 +105,7 @@ def make_html(input_tuples, args):
 def main():
     """ run it! """
 
-    # handle the command line input using argparse
+    # make the GUI application using Gooey
     parser = GooeyParser(
         description="Parses a csv of new books to produce an html file."
         "\nThe resulting html output file will be in the same folder as the csv."
