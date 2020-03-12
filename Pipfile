@@ -6,11 +6,13 @@ verify_ssl = true
 [dev-packages]
 pylint = "*"
 black = "*"
-pyinstaller = "*"
 
 [packages]
 titlecase = "*"
 gooey = "*"
+psutil = "*"
+pillow = "*"
+pyinstaller = {file = "https://github.com/pyinstaller/pyinstaller/archive/develop.zip"}
 
 [requires]
 python_version = "3.6"
