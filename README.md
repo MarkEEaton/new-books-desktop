@@ -1,5 +1,7 @@
 # Make an HTML document out of a spreadsheet of new books
 
+![Screenshot of the application](img/screenshot.png?raw=True)
+
 - This application was developed to solve a specific problem faced by our librarians: how to turn a spreadsheet of new books into an HTML document quickly and easily.
 - Because our acquisitions librarian needed to be do this regularly, coding the HTML by hand was not a viable option.
 - So the application we wrote automatically produces an HTML output from a CSV file. This HTML is suitable for cutting and pasting into a LibGuide.
@@ -18,7 +20,7 @@ Then open up `build.spec` and replace `REPLACE_ME` with the name that you want t
 
 Then, to build the application, run:
 
-    $ PyInstaller build.spec
+    $ pipenv run PyInstaller build.spec
 
 The executable application will be in the `new-books-desktop/dist` directory. It will have the name that you gave it in the `build.spec` file.
 
