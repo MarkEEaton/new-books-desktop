@@ -11,7 +11,7 @@ black = "*"
 titlecase = "*"
 gooey = "*"
 psutil = "*"
-pillow = "*"
+pillow = ">=7.1.0"
 pyinstaller = {file = "https://github.com/pyinstaller/pyinstaller/archive/develop.zip"}
 
 [requires]
