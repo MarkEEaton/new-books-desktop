@@ -35,6 +35,14 @@ def make_tuples(input_data):
             # if there is no call number, assign an empty string
             bib_info3 = ""
 
+        # make the format (print or ebook)
+        if line[5].lower().strip() == "print":
+            bib_info5 = "<li><em>Format: </em>Print book</li>"
+        elif line[5].lower().strip() == "ebook":
+            bib_info5 = "<li><em>Format: </em>eBook</li>"
+        else:
+            bib_info5 = ""
+
         # make the URL based on the ISBN
         # failing that make the URL based on the title
         # failing that make no link
@@ -62,6 +70,7 @@ def make_tuples(input_data):
             + "<ul>"
             + bib_info2
             + bib_info3
+            + bib_info5
             + bib_info4
             + "</ul></li>"
         )
@@ -119,7 +128,7 @@ def main():
     args = parser.parse_args()
 
     # do all the work! Make the tuples and then turn them into HTML
-    with open(args.infile, "r", encoding="cp1252") as file_1:
+    with open(args.infile, "r", encoding="latin-1") as file_1:
         data = list(csv.reader(file_1))
         tuples = make_tuples(data)
     make_html(tuples, args)
