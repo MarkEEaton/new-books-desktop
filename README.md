@@ -8,34 +8,32 @@
 
 ## To set up the application
 
-These instructions assume you already have the following installed: git, python 3, pipenv
+These instructions assume you already have the following installed: git, python 3
 
 To build the converter executable at the command line (you only need to do this part once):
 
     $ git clone https://github.com/markeeaton/new-books-desktop   # this will clone the github repository to your machine
     $ cd new-books-desktop   # go to the repository directory
-    $ pipenv install   # to get the necessary packages
-    
-Then open up `build.spec` and replace `REPLACE_ME` with the name that you want to give your application.
+    $ python -m venv venv    # create a virtual environment
+    $ . venv/Scripts/activate           # activate the virtual environment
+    $ pip install -r requirements.txt   # to get the necessary packages
 
 Then, to build the application, run:
 
-    $ pipenv run PyInstaller build.spec
+    $ python setup.py py2exe
 
-The executable application will be in the `new-books-desktop/dist` directory. It will have the name that you gave it in the `build.spec` file.
-
-If you need more detail about the build process, see the packaging instructions at the Gooey [page](https://github.com/chriskiehl/Gooey#packaging).
-
+The executable application will be in the `new-books-desktop/dist` directory.
 
 Once the application has been built, you can run it. You can navigate to your CSV file.
 
 The CSV should be organized as follows:
 
-|    A     |    B   |    C  |    D        |   E   |
-|:--------:|:------:|:-----:|:-----------:|:-----:|
-| LC Class | Author | Title | Call Number |  ISBN |
-|   ...    |   ...  |  ...  |     ...     |  ...  |
+|    A     |    B   |    C  |    D        |   E   |        |
+|:--------:|:------:|:-----:|:-----------:|:-----:|:------:|
+| LC Class | Author | Title | Call Number |  ISBN | Format |
+|   ...    |   ...  |  ...  |     ...     |  ...  |   ...  |
 
+- "Format" should be either "print" or "ebook"
 - Be sure to include a row with column headers!
 - You can run the application to process the CSV file. The output will be an `html` file in the same directory as the CSV.
 
