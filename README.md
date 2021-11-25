@@ -17,18 +17,15 @@ To build the converter executable at the command line (you only need to do this 
     $ python -m venv venv    # create a virtual environment
     $ . venv/Scripts/activate           # activate the virtual environment
     $ pip install -r requirements.txt   # to get the necessary packages
+    $ python setup.py py2exe            # to create the application
 
-Then, to build the application, run:
-
-    $ python setup.py py2exe
-
-The executable application will be in the `new-books-desktop/dist` directory.
+The executable application will be in the `new-books-desktop/dist` directory, along with a bunch of supporting files. Those supporting files are necessary too.
 
 Once the application has been built, you can run it. You can navigate to your CSV file.
 
 The CSV should be organized as follows:
 
-|    A     |    B   |    C  |    D        |   E   |        |
+|    A     |    B   |    C  |    D        |   E   |    F   |
 |:--------:|:------:|:-----:|:-----------:|:-----:|:------:|
 | LC Class | Author | Title | Call Number |  ISBN | Format |
 |   ...    |   ...  |  ...  |     ...     |  ...  |   ...  |
