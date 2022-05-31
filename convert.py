@@ -50,7 +50,7 @@ def make_tuples(input_data):
             url = (
                 "https://cuny-kb.primo.exlibrisgroup.com/discovery/search?query=isbn,exact,"
                 + line[4]
-                + "&tab=Everything&search_scope=MyInst_and_CI&sortby=rank&vid=01CUNY_KB:CUNY_KB&lang=en&offset=0"
+                + "&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&vid=01CUNY_KB:CUNY_KB&lang=en&offset=0"
             )
             bib_info4 = '<li><a href="' + url + '">Search the catalog</a></li>'
         elif line[2]:

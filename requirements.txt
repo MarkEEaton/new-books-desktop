@@ -31,7 +31,7 @@ six==1.12.0
 soupsieve==2.2.1
 titlecase==2.0.0
 toml==0.10.0
-typed-ast==1.4.0
+typed-ast==1.5.3
 typing-extensions==3.7.4.3
 wrapt==1.11.2
 wxPython==4.1.0
