@@ -10,6 +10,8 @@
 
 These instructions assume you already have the following installed: git, python 3
 
+**This application will only work in Windows environments. Other operating systems are not supported.**
+
 To build the converter executable at the command line (you only need to do this part once):
 
     $ git clone https://github.com/markeeaton/new-books-desktop   # this will clone the github repository to your machine
