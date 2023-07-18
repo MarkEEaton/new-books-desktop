@@ -29,8 +29,8 @@ def make_tuples(input_data):
             bib_info2 = ""
 
         # make the HTML for the call number
-        if line[3]:
-            bib_info3 = "<li><em>Call number: </em>" + line[3] + "</li>"
+        if line[6]:
+            bib_info3 = "<li><em>Call number: </em>" + line[6] + "</li>"
         else:
             # if there is no call number, assign an empty string
             bib_info3 = ""
@@ -38,18 +38,18 @@ def make_tuples(input_data):
         # make the format (print or ebook)
         if line[5].lower().strip() == "print":
             bib_info5 = "<li><em>Format: </em>Print book</li>"
-        elif line[5].lower().strip() == "ebook":
-            bib_info5 = "<li><em>Format: </em>eBook</li>"
+        elif line[5]:
+            bib_info5 = "<li><em>Format: </em>" + line[5] + "</li>"
         else:
             bib_info5 = ""
 
         # make the URL based on the ISBN
         # failing that make the URL based on the title
         # failing that make no link
-        if line[4]:
+        if line[3]:
             url = (
                 "https://cuny-kb.primo.exlibrisgroup.com/discovery/search?query=isbn,exact,"
-                + line[4]
+                + line[3]
                 + "&tab=Everything&search_scope=IZ_CI_AW&sortby=rank&vid=01CUNY_KB:CUNY_KB&lang=en&offset=0"
             )
             bib_info4 = '<li><a href="' + url + '">Search the catalog</a></li>'
@@ -77,7 +77,8 @@ def make_tuples(input_data):
 
         # make a tuple for the item. The first item is LC Class, the second is the HTML.
         lc_class = line[0]
-        item_tuple = (lc_class, bib_info)
+        collection = line[4]
+        item_tuple = (lc_class, collection, bib_info)
         if line[2]:
             data_list.append(item_tuple)
 
@@ -94,17 +95,23 @@ def make_html(input_tuples, args):
         # start a big unordered list
         file_2.write("<ul>")
 
-        # keep track of what LC class is the current one, iterate through the tuples
+        # keep track of what LC class/collection is the current one, iterate through the tuples
         current_lc_class = ""
+        current_collection = ""
         for item in input_tuples:
 
-            # if it's a new LC class, create a new header
+            # if it's a new LC class, or a new header, create a new header
+            if item[1] == "Juvenile Collection" and item[1] != current_collection:
+                file_2.write("</ul><h3>" + item[1] + "</h3><ul>")
+            elif item[1] == "Leisure Collection" and item[1] != current_collection:
+                file_2.write("</ul><h3>" + item[1] + "</h3><ul>")
             if item[0] != current_lc_class:
                 file_2.write("</ul><h3>" + item[0] + "</h3><ul>")
 
-            # then write the item, then reassign the current LC class
-            file_2.write(item[1])
+            # then write the item, then reassign the current LC class and collection
+            file_2.write(item[2])
             current_lc_class = item[0]
+            current_collection = item[1]
 
         # close the big list
         file_2.write("</ul>")
